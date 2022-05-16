@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <title>Sorteador</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Sorteador de números</h1>
+        </header>
+        <section id="settings">
+            <div id="numberOfWinnersPicked">
+                <label for="numberOfWinners">
+                    Quantos números serão sorteados?
+                </label>
+                <input type="number" name="size" id="numberOfWinners" />
+            </div>
+            <div id="range">
+                <label>
+                    <p>De</p>
+                    <input type="number" name="min-number" id="min-number" />
+                </label>
+                <label>
+                    <p>Até</p>
+                    <input type="number" name="max-number" id="max-number" />
+                </label>
+            </div>
+        </section>
+        <section id="result">
+            <button id="pick">Sortear</button>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Página feita por <a href="https://github.com/moisesggomes" title="GitHub">Moisés Gomes</a>
+        </p>
+    </footer>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
