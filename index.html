@@ -11,10 +11,10 @@
 </head>
 <body>
     <main>
-        <header>
+        <header class="wrapper">
             <h1>Sorteador de números</h1>
         </header>
-        <section id="settings">
+        <section id="settings" class="wrapper">
             <div id="numberOfWinnersPicked">
                 <label for="numberOfWinners">
                     Quantos números serão sorteados?
@@ -32,8 +32,18 @@
                 </label>
             </div>
         </section>
-        <section id="result">
+        <section id="result" class="wrapper">
             <button id="pick">Sortear</button>
+            <div id="winners">
+                <div id="currentWinner">
+                    <p id="winner">Nº 30!</p>
+                </div>
+                <div id="winnersList">
+                    <ol>
+                        <li></li>
+                    </ol>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
