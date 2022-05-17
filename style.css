@@ -75,7 +75,7 @@ main #settings #numberOfWinnersPicked #numberOfWinners {
     height: 5rem;
     width: 10rem;
 
-    padding: .8rem .3rem .8rem 1.5rem;
+    padding: .8rem 0rem .8rem 1.5rem;
 
     border-color: purple;
     border-radius: 1rem;
@@ -103,6 +103,23 @@ main section #range label {
     flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
+}
+
+main section #range label:first-child,
+main section #range label:nth-child(2) {
+    position: relative;
+}
+
+main section #range label:first-child::before {
+    content: "De: ";
+    position: absolute;
+    left: -4.5rem;
+}
+
+main section #range label:nth-child(2)::before {
+    content: "Até: ";
+    position: absolute;
+    left: -5.5rem;
 }
 
 /*---- RESULT ----------------------- */
