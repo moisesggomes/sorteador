@@ -1,3 +1,4 @@
+/*==== GLOBAL ==========================*/
 * {
     margin: 0;
     padding: 0;
@@ -22,14 +23,16 @@ body {
     justify-content: space-between;
 }
 
+/*==== MAIN ==========================*/
 main {
     flex: 1;
-
+    
     display: flex;
     flex-direction: column;
     gap: 4rem;
 }
 
+/*---- HEADER ----------------------- */
 main header {
     height: 20rem;
 
@@ -44,6 +47,7 @@ main header h1 {
     text-align: center;
 }
 
+/*---- SETTINGS ----------------------- */
 main #settings {
     display: flex;
     flex-direction: column;
@@ -86,6 +90,7 @@ main section #range label {
     gap: 1rem;
 }
 
+/*---- RESULT ----------------------- */
 main #result {
     display: flex;
     flex-direction: column;
@@ -113,9 +118,27 @@ main #result #winners #currentWinner #winner {
     margin-inline: auto;
 }
 
+/*====FOOTER==========================*/
 footer {
     height: 15rem;
 
     display: flex;
     justify-content: center;
+}
+
+footer #author {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer #author p {
+    flex: 1;
+    flex-shrink: 1;
+
+    text-align: center;
+}
+
+footer #author #links {
+    flex-shrink: 2;
 }
