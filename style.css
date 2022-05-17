@@ -10,7 +10,7 @@
 
 .wrapper {
     margin-inline: auto;
-    width: min(100rem, 90%);
+    width: min(60rem, 100%);
 }
 
 body {
@@ -34,14 +34,14 @@ main header {
     height: 20rem;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    text-align: center;
 }
 
 main header h1 {
+    width: 100%;
+
     font-size: 5rem;
+    text-align: center;
 }
 
 main #settings {
@@ -92,9 +92,25 @@ main #result {
     align-items: center;
 }
 
-main #result #pick {
+main #result button#pick {
     width: 20rem;
     height: 8rem;
+}
+
+main #result #winners {
+    width: 100%;
+    padding: 6rem;
+}
+
+main #result #winners #currentWinner {
+    width: 100%;
+}
+
+main #result #winners #currentWinner #winner {
+    font-size: 4rem;
+    text-align: center;
+
+    margin-inline: auto;
 }
 
 footer {
