@@ -3,7 +3,7 @@ const minNumber = document.getElementById("minNumber");
 const maxNumber = document.getElementById("maxNumber");
 
 const pick = document.getElementById("pick");
-const reset = document.querySelectorAll(".reset");
+const reset = document.getElementById("reset");
 console.log(reset);
 
 const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
@@ -61,13 +61,9 @@ function pickAWinner() {
     }
 
     if (winners.length >= Number(numberOfWinners.value) - 1) {
-        reset.forEach((value)=>{
-            value.classList.add("active");
-        });
+        reset.classList.add("active");
     } else {
-        reset.forEach((value)=>{
-            value.classList.remove("active");
-        });
+        reset.classList.remove("active");
     }
 
     console.log(`Número: ${winner} sorteado!!!`);
@@ -98,7 +94,5 @@ function resetAll() {
     // maxNumber.value = 5
     winnersList.innerHTML = currentWinner.innerHTML = "";
     winners = [];
-    reset.forEach((value)=>{
-        value.classList.remove("active");
-    });
+    reset.classList.remove("active");
 }

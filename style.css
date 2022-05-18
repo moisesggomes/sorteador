@@ -180,7 +180,7 @@ main #result #actions {
 
 main #result button#pick,
 /* #result button#reset.active { */
-.reset.active {
+#reset.active {
     width: 18rem;
     height: 7rem;
 
@@ -204,7 +204,7 @@ main #result a {
 
 main #result button#pick:hover,
 /* #result button#reset.active:hover { */
-.reset.active:hover {
+#reset.active:hover {
     color: var(--baby-blue);
 
     background-color: var(--blue-grotto);
@@ -214,12 +214,12 @@ main #result button#pick:hover,
 }
 
 /* #result button#reset { */
-.reset {
+#reset {
     display: none;
 }
 
 /* #result button#reset.active { */
-.reset.active {
+#reset.active {
     display: initial;
 }
 
