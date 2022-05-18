@@ -16,6 +16,10 @@
     --border-width: 4px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .wrapper {
     margin-inline: auto;
     width: min(60rem, 100%);
@@ -158,12 +162,25 @@ main section #range label:nth-child(2)::before {
 
 /*---- RESULT ----------------------- */
 main #result {
+    padding-bottom: 4rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-main #result button#pick {
+main #result #actions {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+main #result button#pick,
+/* #result button#reset.active { */
+.reset.active {
     width: 18rem;
     height: 7rem;
 
@@ -180,13 +197,30 @@ main #result button#pick {
     text-transform: uppercase;
 }
 
-main #result button#pick:hover {
+main #result a {
+    text-decoration: none;
+    color: var(--navy-blue);
+}
+
+main #result button#pick:hover,
+/* #result button#reset.active:hover { */
+.reset.active:hover {
     color: var(--baby-blue);
 
     background-color: var(--blue-grotto);
     cursor: pointer;
 
     transition: 200ms;
+}
+
+/* #result button#reset { */
+.reset {
+    display: none;
+}
+
+/* #result button#reset.active { */
+.reset.active {
+    display: initial;
 }
 
 main #result #winners {

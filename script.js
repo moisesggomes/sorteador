@@ -1,7 +1,11 @@
 const numberOfWinners = document.getElementById("numberOfWinners");
 const minNumber = document.getElementById("minNumber");
 const maxNumber = document.getElementById("maxNumber");
+
 const pick = document.getElementById("pick");
+const reset = document.querySelectorAll(".reset");
+console.log(reset);
+
 const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
 const winnersList = document.querySelector("#winnersList ol");;
 
@@ -39,7 +43,6 @@ function setMaxValue() {
 
     const range = max - min + 1;
     if (isNaN(range) || range == 0) {
-        // alert("Desculpa, mas não consegui realizar o sorteio :(");
         return;
     }
     people = Array.from(new Array(range)).map((value, index) => {
@@ -49,13 +52,22 @@ function setMaxValue() {
 }
 
 function pickAWinner() {
+    if (winners.length >= Number(numberOfWinners.value)) {
+        return;
+    }
     let winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
     while (winners.includes(winner) && winners.length < Number(numberOfWinners.value)) {
         winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
     }
 
-    if (winners.length >= Number(numberOfWinners.value)) {
-        return;
+    if (winners.length >= Number(numberOfWinners.value) - 1) {
+        reset.forEach((value)=>{
+            value.classList.add("active");
+        });
+    } else {
+        reset.forEach((value)=>{
+            value.classList.remove("active");
+        });
     }
 
     console.log(`Número: ${winner} sorteado!!!`);
@@ -78,4 +90,15 @@ function pickAWinner() {
 function getRandomIntBetweenTwoInts(minInt, maxInt) {
     const random = Math.floor(Math.random() * (maxInt - minInt)) + minInt;
     return random;
+}
+
+function resetAll() {
+    // numberOfWinners.value = 1;
+    // minNumber.value = 1;
+    // maxNumber.value = 5
+    winnersList.innerHTML = currentWinner.innerHTML = "";
+    winners = [];
+    reset.forEach((value)=>{
+        value.classList.remove("active");
+    });
 }

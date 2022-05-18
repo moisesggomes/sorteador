@@ -32,7 +32,10 @@
             </div>
         </section>
         <section id="result" class="wrapper">
-            <button id="pick" onclick="pickAWinner()">Sortear</button>
+            <div id="actions">
+                <button id="pick" onclick="pickAWinner()">Sortear</button>
+                <button onclick="resetAll()" class="reset">Resetar</button>
+            </div>
             <div id="winners">
                 <div id="currentWinner">
                     <p id="winner"></p>
@@ -43,6 +46,7 @@
                     </ol>
                 </div>
             </div>
+            <a href="#settings"><button onclick="resetAll()" class="reset">Resetar</button></a>
         </section>
     </main>
     <footer>
