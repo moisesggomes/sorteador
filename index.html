@@ -19,35 +19,26 @@
                 <label for="numberOfWinners">
                     Quantos números serão<br/>sorteados?
                 </label>
-                <input type="number" name="size" id="numberOfWinners" />
+                <input type="number" name="size" id="numberOfWinners" min="1"/>
             </div>
             <div id="range">
                 <label>
-                    <!-- <p>De</p> -->
-                    <input type="number" name="min-number" id="minNumber" />
+                    <input type="number" name="min-number" id="minNumber" min="0"/>
                 </label>
                 <label>
-                    <!-- <p>Até</p> -->
-                    <input type="number" name="max-number" id="maxNumber" />
+                    <input type="number" name="max-number" id="maxNumber" min="1"/>
                 </label>
             </div>
         </section>
         <section id="result" class="wrapper">
-            <button id="pick">Sortear</button>
+            <button id="pick" onclick="pickAWinner()">Sortear</button>
             <div id="winners">
                 <div id="currentWinner">
                     <p id="winner">Nº 30!</p>
                 </div>
                 <div id="winnersList">
                     <ol>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
-                        <li>Nº X</li>
+                        <li></li>
                     </ol>
                 </div>
             </div>
