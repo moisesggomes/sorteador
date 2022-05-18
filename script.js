@@ -53,6 +53,7 @@ function setMaxValue() {
 
 function pickAWinner() {
     if (winners.length >= Number(numberOfWinners.value)) {
+        reset.classList.add("active");
         return;
     }
     let winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
