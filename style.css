@@ -7,6 +7,8 @@
 
 :root {
     font-size: 62.5%; /* 1rem == 10px */
+    --btn-primary-color: rgb(140, 100, 0);
+    --border-width: 4px;
 }
 
 .wrapper {
@@ -24,7 +26,7 @@ body {
 }
 
 header, #settings, #result, footer {
-    padding-inline: 2rem;
+    padding-inline: 3rem;
 }
 
 /*==== MAIN ==========================*/
@@ -43,7 +45,7 @@ main {
 main header {
     height: 20rem;
 
-    border: blue 2px solid;
+    border: blue var(--border-width) solid;
     border-radius: 1.5rem;
 
     display: flex;
@@ -61,7 +63,7 @@ main header h1 {
 main #settings {
     padding-block: 4rem;
 
-    border: purple solid 2px;
+    border: purple solid var(--border-width);
     border-radius: 1.5rem;
 
     display: flex;
@@ -80,7 +82,7 @@ main #settings #numberOfWinnersPicked #numberOfWinners {
 
     padding: .8rem 0rem .8rem 1.5rem;
 
-    border-color: purple;
+    border: purple var(--border-width) solid;
     border-radius: 1rem;
 
     font-size: 2.5rem;
@@ -94,7 +96,13 @@ main #settings #numberOfWinnersPicked {
     align-items: center;
 }
 
+main #settings #numberOfWinnersPicked label {
+    text-align: center;
+}
+
 main section #range {
+    padding: 2rem;
+
     display: flex;
     justify-content: center;
     gap: 6rem;
@@ -114,13 +122,13 @@ main section #range label:nth-child(2) {
 }
 
 main section #range label:first-child::before {
-    content: "De: ";
+    content: "De";
     position: absolute;
     left: -4.5rem;
 }
 
 main section #range label:nth-child(2)::before {
-    content: "Até: ";
+    content: "Até";
     position: absolute;
     left: -5.5rem;
 }
@@ -133,10 +141,15 @@ main #result {
 }
 
 main #result button#pick {
-    width: 20rem;
-    height: 8rem;
+    width: 18rem;
+    height: 7rem;
 
+    background-color: yellow;
+
+    border: var(--btn-primary-color) var(--border-width) solid;
     border-radius: 4rem;
+
+    color: var(--btn-primary-color);
 
     font-size: 2rem;
     font-weight: 700;
@@ -163,7 +176,7 @@ main #result #winners #currentWinner #winner {
 }
 
 main #result #winners #winnersList {
-    border: solid 2px rgb(230, 0, 0);
+    border: blue var(--border-width) solid;
     border-radius: 1.5rem;
 
     padding: 1rem 5rem;
@@ -205,7 +218,7 @@ footer {
     display: flex;
     justify-content: center;
 
-    border-top: rgb(150, 150, 150) solid 1px;
+    border-top: rgb(150, 150, 150) var(--border-width) solid;
 }
 
 footer #author {
