@@ -15,30 +15,31 @@
             <h1 id="title" title="Título">Sorteador de números</h1>
         </header>
         <section id="settings" class="wrapper">
+            
+            <div id="range">
+                <label>
+                    <input type="number" name="min-number" id="minNumber" min="0" value="1"/>
+                </label>
+                <label>
+                    <input type="number" name="max-number" id="maxNumber" min="1" value="5"/>
+                </label>
+            </div>
             <div id="numberOfWinnersPicked">
                 <label for="numberOfWinners">
                     Quantos números serão<br/>sorteados?
                 </label>
-                <input type="number" name="size" id="numberOfWinners" min="1"/>
-            </div>
-            <div id="range">
-                <label>
-                    <input type="number" name="min-number" id="minNumber" min="0"/>
-                </label>
-                <label>
-                    <input type="number" name="max-number" id="maxNumber" min="1"/>
-                </label>
+                <input type="number" name="size" id="numberOfWinners" min="1" value="1"/>
             </div>
         </section>
         <section id="result" class="wrapper">
             <button id="pick" onclick="pickAWinner()">Sortear</button>
             <div id="winners">
                 <div id="currentWinner">
-                    <p id="winner">Nº 30!</p>
+                    <p id="winner"></p>
                 </div>
                 <div id="winnersList">
                     <ol>
-                        <li></li>
+                        
                     </ol>
                 </div>
             </div>

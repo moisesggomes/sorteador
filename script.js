@@ -2,18 +2,20 @@ const numberOfWinners = document.getElementById("numberOfWinners");
 const minNumber = document.getElementById("minNumber");
 const maxNumber = document.getElementById("maxNumber");
 const pick = document.getElementById("pick");
+const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
+const winnersList = document.querySelector("#winnersList ol");;
 
-let winners;
+let people;
+let winners = [];
 
+numberOfWinners.addEventListener("input", (e) => {
+    setMaxValue();
+})
 minNumber.addEventListener("input", (e) => {
-    if (Number(minNumber.value) > Number(maxNumber.value)) {
-        setMaxValue();
-    }
+    setMaxValue();
 });
 maxNumber.addEventListener("input", (e) => {
-    if (Number(maxNumber.value) > Number(numberOfWinners.value)) {
-        setMaxValue();
-    }
+    setMaxValue();
 });
 maxNumber.addEventListener("input", (e) => {
     setMaxValue();
@@ -21,8 +23,8 @@ maxNumber.addEventListener("input", (e) => {
 
 function setMaxValue() {
     let min = Number(minNumber.value);
-    let max = Number(maxNumber.value);
-    const nWinners = Number(numberOfWinners.value);
+    const max = Number(maxNumber.value);
+    let nWinners = Number(numberOfWinners.value);
 
     minNumber.setAttribute("max", maxNumber.value);
     if (min > max) {
@@ -31,8 +33,8 @@ function setMaxValue() {
             minNumber.value = min = 0;
         }
     }
-    if (max > nWinners) {
-        maxNumber.value = max = numberOfWinners.value;
+    if (nWinners > max) {
+        numberOfWinners.value = nWinners = maxNumber.value;
     }
 
     const range = max - min + 1;
@@ -40,12 +42,40 @@ function setMaxValue() {
         // alert("Desculpa, mas não consegui realizar o sorteio :(");
         return;
     }
-    winners = Array.from(new Array(range)).map((value, index) => {
+    people = Array.from(new Array(range)).map((value, index) => {
         return min + index;
     });
-    console.log(winners);
+    console.log(people);
 }
 
 function pickAWinner() {
-    
+    let winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
+    while (winners.includes(winner) && winners.length < Number(numberOfWinners.value)) {
+        winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
+    }
+
+    if (winners.length >= Number(numberOfWinners.value)) {
+        return;
+    }
+
+    console.log(`Número: ${winner} sorteado!!!`);
+
+    const newWinner = document.createElement("li");
+    newWinner.innerHTML = `Nº ${winner}`;
+    currentWinner.innerText = newWinner.innerText;
+    winners.push(winner);
+    winnersList.append(newWinner);
+
+    people.forEach((value, index)=> {
+        if (value === winner) {
+            people.splice(index, 1);
+            console.log(people);
+            return;
+        }
+    });
+}
+
+function getRandomIntBetweenTwoInts(minInt, maxInt) {
+    const random = Math.floor(Math.random() * (maxInt - minInt)) + minInt;
+    return random;
 }
