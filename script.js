@@ -37,12 +37,13 @@ function setMaxValue() {
             minNumber.value = min = 0;
         }
     }
-    if (nWinners > max) {
+    if (nWinners >= max) {
         numberOfWinners.value = nWinners = maxNumber.value;
     }
 
     const range = max - min + 1;
-    if (isNaN(range) || range == 0) {
+    if (isNaN(range) || range <= 2 && Number(numberOfWinners.value) > range) {
+				numberOfWinners.value = range;
         return;
     }
     people = Array.from(new Array(range)).map((value, index) => {
