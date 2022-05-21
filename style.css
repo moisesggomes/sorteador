@@ -179,8 +179,7 @@ main #result #actions {
 }
 
 main #result button#pick,
-/* #result button#reset.active { */
-#reset.active {
+main #result button#reset {
     width: 18rem;
     height: 7rem;
 
@@ -203,24 +202,13 @@ main #result a {
 }
 
 main #result button#pick:hover,
-/* #result button#reset.active:hover { */
-#reset.active:hover {
+main #result button#reset:hover {
     color: var(--baby-blue);
 
     background-color: var(--blue-grotto);
     cursor: pointer;
 
     transition: 200ms;
-}
-
-/* #result button#reset { */
-#reset {
-    display: none;
-}
-
-/* #result button#reset.active { */
-#reset.active {
-    display: initial;
 }
 
 main #result #winners {

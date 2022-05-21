@@ -4,7 +4,6 @@ const maxNumber = document.getElementById("maxNumber");
 
 const pick = document.getElementById("pick");
 const reset = document.getElementById("reset");
-console.log(reset);
 
 const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
 const winnersList = document.querySelector("#winnersList ol");;
@@ -54,18 +53,11 @@ function setMaxValue() {
 
 function pickAWinner() {
     if (winners.length >= Number(numberOfWinners.value)) {
-        reset.classList.add("active");
         return;
     }
     let winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
     while (winners.includes(winner) && winners.length < Number(numberOfWinners.value)) {
         winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
-    }
-
-    if (winners.length >= Number(numberOfWinners.value) - 1) {
-        reset.classList.add("active");
-    } else {
-        reset.classList.remove("active");
     }
 
     console.log(`Número: ${winner} sorteado!!!`);
@@ -91,10 +83,6 @@ function getRandomIntBetweenTwoInts(minInt, maxInt) {
 }
 
 function resetAll() {
-    // numberOfWinners.value = 1;
-    // minNumber.value = 1;
-    // maxNumber.value = 5
     winnersList.innerHTML = currentWinner.innerHTML = "";
     winners = [];
-    reset.classList.remove("active");
 }
