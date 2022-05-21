@@ -88,7 +88,84 @@ main #settings {
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 4rem;
+}
+
+main #settings #instructions {
+    padding-block: 2rem;
+}
+
+main #settings #instructions svg {
+    margin-bottom: 2rem;
+
+    display: block;
+    margin-inline: auto;
+    margin-block: auto;
+
+    cursor: pointer;
+}
+
+main #settings #instructions svg path {
+    fill: var(--baby-blue);
+}
+
+main #settings #instructions svg:hover path {
+    fill: var(--blue-grotto);
+
+    transition: 200ms;
+}
+
+main #settings #instructions {
+    width: 100%;
+
+    padding-inline: 3rem;
+
+    background-color: var(--navy-blue);
+
+    color: var(--baby-blue);
+
+    border: var(--border-width) solid var(--blue-grotto);
+    border-radius: 1.5rem;
+}
+
+main #settings #instructions ul {
+    display: none;
+}
+
+main #settings #instructions ul.expanded {
+    margin-top: 1.5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    list-style-position: inside;
+}
+
+main #settings #instructions ul li {
+    position: relative;
+
+    text-align: justify;
+}
+
+main #settings #instructions ul li + li:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1rem;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: var(--blue-grotto);
+    border-radius: 1rem;
+}
+
+main #settings #instructions ul li a {
+    text-decoration: none;
+    font-weight: 700;
+    color: inherit;
 }
 
 main #settings label {

@@ -1,3 +1,5 @@
+const expand = document.getElementById("expand");
+
 const numberOfWinners = document.getElementById("numberOfWinners");
 const minNumber = document.getElementById("minNumber");
 const maxNumber = document.getElementById("maxNumber");
@@ -6,11 +8,15 @@ const pick = document.getElementById("pick");
 const reset = document.getElementById("reset");
 
 const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
-const winnersList = document.querySelector("#winnersList ol");;
+const winnersList = document.querySelector("#winnersList ol");
 
 let people;
 let winners = [];
 setMaxValue();
+
+expand.addEventListener("click", (e) => {
+    showHide();
+});
 
 numberOfWinners.addEventListener("input", (e) => {
     setMaxValue();
@@ -24,6 +30,8 @@ maxNumber.addEventListener("input", (e) => {
 maxNumber.addEventListener("input", (e) => {
     setMaxValue();
 });
+
+
 
 function setMaxValue() {
     let min = Number(minNumber.value);
@@ -91,4 +99,9 @@ function showWinner(winner) {
 function resetAll() {
     winnersList.innerHTML = currentWinner.innerHTML = "";
     winners = [];
+}
+
+function showHide() {
+    const hints = document.getElementById("hints");
+    hints.classList.toggle("expanded");
 }
