@@ -10,6 +10,7 @@ const winnersList = document.querySelector("#winnersList ol");;
 
 let people;
 let winners = [];
+setMaxValue();
 
 numberOfWinners.addEventListener("input", (e) => {
     setMaxValue();
@@ -42,7 +43,7 @@ function setMaxValue() {
 
     const range = max - min + 1;
     if (isNaN(range) || range <= 2 && Number(numberOfWinners.value) > range) {
-				numberOfWinners.value = range;
+		numberOfWinners.value = range;
         return;
     }
     people = Array.from(new Array(range)).map((value, index) => {
@@ -55,19 +56,16 @@ function pickAWinner() {
     if (winners.length >= Number(numberOfWinners.value)) {
         return;
     }
-    let winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
-    while (winners.includes(winner) && winners.length < Number(numberOfWinners.value)) {
+
+    let winner;
+    do {
         winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
-    }
+    } while (winners.includes(winner) && winners.length < Number(numberOfWinners.value))
 
     console.log(`Número: ${winner} sorteado!!!`);
+    showWinner(winner);
 
-    const newWinner = document.createElement("li");
-    newWinner.innerHTML = `Nº ${winner}`;
-    currentWinner.innerText = newWinner.innerText;
-    winners.push(winner);
-    winnersList.append(newWinner);
-
+    // Removes the winner index from people's array
     people.forEach((value, index)=> {
         if (value === winner) {
             people.splice(index, 1);
@@ -80,6 +78,14 @@ function pickAWinner() {
 function getRandomIntBetweenTwoInts(minInt, maxInt) {
     const random = Math.floor(Math.random() * (maxInt - minInt)) + minInt;
     return random;
+}
+
+function showWinner(winner) {
+    const newWinner = document.createElement("li");
+    newWinner.innerHTML = `Nº ${winner}`;
+    currentWinner.innerText = newWinner.innerText;
+    winners.push(winner);
+    winnersList.append(newWinner);
 }
 
 function resetAll() {
