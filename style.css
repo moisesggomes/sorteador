@@ -383,6 +383,32 @@ footer a {
     color: var(--blue-green);
 }
 
+footer #author {
+    padding-block: 2rem;
+}
+
 footer #author #links {
     flex-shrink: 2;
+}
+
+footer #author #links ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer #author #links ul li a {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: .7rem;
+
+    font-size: 1.2rem;
+    line-height: 0;
+}
+
+footer #author #links ul li img {
+    width: 3rem;
 }
