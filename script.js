@@ -10,7 +10,7 @@ const reset = document.getElementById("reset");
 const currentWinner = document.querySelector("main #result #winners #currentWinner #winner");
 const winnersList = document.querySelector("#winnersList ol");
 
-let people;
+let availableNumbers;
 let winners = [];
 setMaxValue();
 
@@ -54,10 +54,12 @@ function setMaxValue() {
 		numberOfWinners.value = range;
         return;
     }
-    people = Array.from(new Array(range)).map((value, index) => {
+    // Generates the array for the current rules
+    availableNumbers = Array.from(new Array(range)).map((value, index) => {
         return min + index;
     });
-    console.log(people);
+    removeWinnersFromAvailableNumbers();
+    console.log(availableNumbers);
 }
 
 function pickAWinner() {
@@ -65,26 +67,29 @@ function pickAWinner() {
         return;
     }
 
-    let winner;
-    do {
-        winner = getRandomIntBetweenTwoInts(Number(minNumber.value), Number(maxNumber.value) + 1);
-    } while (winners.includes(winner) && winners.length < Number(numberOfWinners.value))
+    let winnerIndex = getRandomIndex(availableNumbers.length);
+    let winner = availableNumbers[winnerIndex];
 
     console.log(`Número: ${winner} sorteado!!!`);
     showWinner(winner);
 
-    // Removes the winner index from people's array
-    people.forEach((value, index)=> {
-        if (value === winner) {
-            people.splice(index, 1);
-            console.log(people);
-            return;
-        }
-    });
+    removeWinnersFromAvailableNumbers();
 }
 
-function getRandomIntBetweenTwoInts(minInt, maxInt) {
-    const random = Math.floor(Math.random() * (maxInt - minInt)) + minInt;
+function removeWinnersFromAvailableNumbers() {
+    winners.forEach((winnerValue) => {
+        if (availableNumbers.includes(winnerValue)) {
+            const availableIndex = availableNumbers.indexOf(winnerValue);
+            availableNumbers.splice(availableIndex, 1);
+        }
+    });
+    console.clear();
+    console.log("Winners: " + winners);
+    console.log("Available: " + availableNumbers);
+}
+
+function getRandomIndex(length) {
+    const random = Math.floor(Math.random() * (length));
     return random;
 }
 
@@ -92,6 +97,7 @@ function showWinner(winner) {
     const newWinner = document.createElement("li");
     newWinner.innerHTML = `Nº ${winner}`;
     currentWinner.innerText = newWinner.innerText;
+
     winners.push(winner);
     winnersList.append(newWinner);
 }
@@ -99,6 +105,7 @@ function showWinner(winner) {
 function resetAll() {
     winnersList.innerHTML = currentWinner.innerHTML = "";
     winners = [];
+    setMaxValue();
 }
 
 function showHide() {
