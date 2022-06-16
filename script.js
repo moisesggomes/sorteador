@@ -11,81 +11,67 @@ const currentWinner = document.querySelector("main #result #winners #currentWinn
 const winnersList = document.querySelector("#winnersList ol");
 
 let availableNumbers;
-let winners = [];
-setMaxValue();
+let pickedNumbers = [];
 
 expand.addEventListener("click", (e) => {
     showHide();
 });
 
 numberOfWinners.addEventListener("input", (e) => {
-    setMaxValue();
+    adjustValues();
 })
 minNumber.addEventListener("input", (e) => {
-    setMaxValue();
+    adjustValues();
 });
 maxNumber.addEventListener("input", (e) => {
-    setMaxValue();
+    adjustValues();
 });
 maxNumber.addEventListener("input", (e) => {
-    setMaxValue();
+    adjustValues();
 });
 
+function showHide() {
+    const hints = document.getElementById("hints");
+    hints.classList.toggle("expanded");
+}
 
-
-function setMaxValue() {
-    let min = Number(minNumber.value);
-    const max = Number(maxNumber.value);
-    let nWinners = Number(numberOfWinners.value);
-
-    minNumber.setAttribute("max", maxNumber.value);
+function adjustValues() {
+    const max = getInputInt(maxNumber);
+    let min = getInputInt(minNumber);
+    let nWinners = getInputInt(numberOfWinners);
     if (min > max) {
-        minNumber.value = min = maxNumber.value - 1;
-        if (Number(minNumber.value < 0)) {
-            minNumber.value = min = 0;
-        }
+        minNumber.value = min = max;
     }
-    if (nWinners >= max) {
-        numberOfWinners.value = nWinners = maxNumber.value;
-    }
-
     const range = max - min + 1;
-    if (isNaN(range) || range <= 2 && Number(numberOfWinners.value) > range) {
+    if (nWinners > range) {
 		numberOfWinners.value = range;
-        return;
     }
-    // Generates the array for the current rules
-    availableNumbers = Array.from(new Array(range)).map((value, index) => {
-        return min + index;
-    });
-    removeWinnersFromAvailableNumbers();
-    console.log(availableNumbers);
+}
+
+function getInputInt(input) {
+    return Number(input.value);
 }
 
 function pickAWinner() {
-    if (winners.length >= Number(numberOfWinners.value)) {
+    createCompetingNumbersList();
+    if (pickedNumbers.length >= getInputInt(numberOfWinners)) {
         return;
     }
-
     let winnerIndex = getRandomIndex(availableNumbers.length);
     let winner = availableNumbers[winnerIndex];
 
-    console.log(`Número: ${winner} sorteado!!!`);
     showWinner(winner);
-
     removeWinnersFromAvailableNumbers();
 }
 
-function removeWinnersFromAvailableNumbers() {
-    winners.forEach((winnerValue) => {
-        if (availableNumbers.includes(winnerValue)) {
-            const availableIndex = availableNumbers.indexOf(winnerValue);
-            availableNumbers.splice(availableIndex, 1);
-        }
+function createCompetingNumbersList() {
+    const lowestNumber = getInputInt(minNumber);
+    const count = getInputInt(maxNumber) - lowestNumber + 1;
+    availableNumbers = Array.from(new Array(count)).map((value, index) => {
+        return lowestNumber + index;
     });
-    console.clear();
-    console.log("Winners: " + winners);
-    console.log("Available: " + availableNumbers);
+    removeWinnersFromAvailableNumbers();
+    console.log(availableNumbers);
 }
 
 function getRandomIndex(length) {
@@ -95,20 +81,26 @@ function getRandomIndex(length) {
 
 function showWinner(winner) {
     const newWinner = document.createElement("li");
-    newWinner.innerHTML = `Nº ${winner}`;
-    currentWinner.innerText = newWinner.innerText;
-
-    winners.push(winner);
+    newWinner.innerHTML = currentWinner.innerHTML = `Nº ${winner}`;
+    pickedNumbers.push(winner);
     winnersList.append(newWinner);
+}
+
+function removeWinnersFromAvailableNumbers() {
+    pickedNumbers.forEach(removeIfIsWinner);
+    console.clear();
+    console.log("Winners: " + pickedNumbers);
+    console.log("Available: " + availableNumbers);
+}
+
+function removeIfIsWinner(winnerValue) {
+    if (availableNumbers.includes(winnerValue)) {
+        const valueIndex = availableNumbers.indexOf(winnerValue);
+        availableNumbers.splice(valueIndex, 1);
+    }
 }
 
 function resetAll() {
     winnersList.innerHTML = currentWinner.innerHTML = "";
-    winners = [];
-    setMaxValue();
-}
-
-function showHide() {
-    const hints = document.getElementById("hints");
-    hints.classList.toggle("expanded");
+    pickedNumbers = [];
 }
