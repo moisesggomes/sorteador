@@ -75,6 +75,7 @@ main header h1 {
     text-align: center;
 
     cursor: default;
+    user-select: none;
 }
 
 /*---- SETTINGS ----------------------- */
