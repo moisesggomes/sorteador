@@ -39,6 +39,12 @@ function adjustValues() {
     const max = getInputInt(maxNumber);
     let min = getInputInt(minNumber);
     let nWinners = getInputInt(numberOfWinners);
+
+    const performanceLimit = 1000000;
+    if (max > performanceLimit) {
+        maxNumber.value = performanceLimit;
+    }
+    
     if (min > max) {
         minNumber.value = min = max;
     }
@@ -71,7 +77,6 @@ function createCompetingNumbersList() {
         return lowestNumber + index;
     });
     removeWinnersFromAvailableNumbers();
-    console.log(availableNumbers);
 }
 
 function getRandomIndex(length) {
@@ -88,9 +93,6 @@ function showWinner(winner) {
 
 function removeWinnersFromAvailableNumbers() {
     pickedNumbers.forEach(removeIfIsWinner);
-    console.clear();
-    console.log("Winners: " + pickedNumbers);
-    console.log("Available: " + availableNumbers);
 }
 
 function removeIfIsWinner(winnerValue) {
