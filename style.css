@@ -109,12 +109,12 @@ main #settings #instructions svg {
 
 main #settings #instructions svg path {
     fill: var(--baby-blue);
+
+    transition: 200ms;
 }
 
 main #settings #instructions svg:hover path {
     fill: var(--blue-grotto);
-
-    transition: 200ms;
 }
 
 main #settings #instructions {
@@ -272,6 +272,8 @@ main #result button#reset {
     font-weight: 700;
     letter-spacing: .3rem;
     text-transform: uppercase;
+
+    transition: 200ms;
 }
 
 main #result a {
@@ -285,8 +287,6 @@ main #result button#reset:hover {
 
     background-color: var(--blue-grotto);
     cursor: pointer;
-
-    transition: 200ms;
 }
 
 main #result #winners {
@@ -406,7 +406,6 @@ footer #author #links ul {
 
 footer #author #links ul li a {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     gap: .7rem;
 
@@ -422,12 +421,16 @@ footer #author #links ul li svg {
     fill: var(--blue-green);
 }
 
+footer #author p a,
+footer #author #links ul li a svg,
+footer #author #links ul li a {
+    transition: 200ms;
+}
+
 footer #author p a:hover,
 footer #author #links ul li a:hover svg,
 footer #author #links ul li a:hover {
     color: var(--blue-grotto);
 
     fill: var(--blue-grotto);
-
-    transition: 300ms;
 }
