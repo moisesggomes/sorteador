@@ -324,12 +324,13 @@ main #result #winners #currentWinner #winner {
 }
 
 main #result #winners #winnersList {
+    min-height: 14.4rem;
+    max-height: 32.8rem;
     border: var(--border-width) solid var(--blue-grotto);
     border-radius: 1.5rem;
-
     padding: 1rem 5rem;
 
-    min-height: 14.4rem;
+    overflow-y: auto;
 
     background-color: var(--blue-green);
 }
