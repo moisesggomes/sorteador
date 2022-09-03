@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    word-break: break-word;
 }
 
 :root {
@@ -99,6 +101,7 @@ main #settings #instructions {
 
 main #settings #instructions svg {
     margin-bottom: 2rem;
+    outline: none;
 
     display: block;
     margin-inline: auto;
@@ -254,6 +257,19 @@ main #result #actions {
     justify-content: center;
     gap: 3rem;
     flex-wrap: wrap;
+}
+
+main #result #actions button#pick {
+    animation: pulse 1.5s 0s linear infinite;
+}
+
+@keyframes pulse {
+    0% {
+        outline: 0 solid var(--blue-grotto);
+    }
+    100% {
+        outline: 3rem solid transparent;
+    }
 }
 
 main #result button#pick,
