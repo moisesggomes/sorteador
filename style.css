@@ -451,3 +451,9 @@ footer #author #links ul li a:hover {
 
     fill: var(--blue-grotto);
 }
+
+@media (max-width: 425px) {
+    :root {
+        font-size: 40%;
+    }
+}
