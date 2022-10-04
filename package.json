@@ -1,0 +1,28 @@
+{
+  "name": "sorteador",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "test": "tests"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "node server",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moisesggomes/sorteador.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moisesggomes/sorteador/issues"
+  },
+  "homepage": "https://github.com/moisesggomes/sorteador#readme",
+  "devDependencies": {
+    "express": "^4.18.1",
+    "vitest": "^0.23.4"
+  }
+}
