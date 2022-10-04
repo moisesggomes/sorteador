@@ -9,8 +9,8 @@ const host = "localhost";
 const port = 8080;
 app.listen(8080, () => console.log(`Server is running on http://${host}:${port}`));
 
-app.use(express.static(path.join(__dirname, "src")));
+app.use(express.static(path.join(__dirname)));
 
 app.get("/", (request, response) => {
-    return response.sendFile(path.join(__dirname, "src/index.html"));
+    return response.sendFile(path.join(__dirname, "index.html"));
 });
