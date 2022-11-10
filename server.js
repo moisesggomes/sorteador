@@ -11,6 +11,4 @@ app.listen(8080, () => console.log(`Server is running on http://${host}:${port}`
 
 app.use(express.static(path.join(__dirname)));
 
-app.get("/", (request, response) => {
-    return response.sendFile(path.join(__dirname, "index.html"));
-});
+app.get("/", (request, response) => response.sendFile(path.join(__dirname, "index.html")));
